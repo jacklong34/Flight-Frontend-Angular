@@ -1,0 +1,86 @@
+<form [formGroup]="bookFlightForm" class="border border-dark">
+  <div class="row header-row">
+    <div class="col text-center">
+      <span>Book the Flight</span>
+    </div>
+  </div>
+  <div class="blur-background">
+    <div class="form-group">
+      <label for="">Passenger Name</label>
+      <input type="text" class="form-control" formControlName="passengerName" />
+      <p
+        *ngIf="
+          (bookFlightForm.controls.passengerName.dirty ||
+            bookFlightForm.controls.passengerName.touched ||
+            !bookFlightForm.controls.passengerName.pristine) &&
+          bookFlightForm.controls.passengerName.errors
+        "
+        class="alert alert-danger"
+      >
+        This field is required
+      </p>
+    </div>
+    <div class="form-group">
+      <label for="">Number of Tickets</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="numberOfTickets"
+      />
+      <p
+        *ngIf="
+          (bookFlightForm.controls.numberOfTickets.dirty ||
+            bookFlightForm.controls.numberOfTickets.touched ||
+            !bookFlightForm.controls.numberOfTickets.pristine) &&
+          bookFlightForm.controls.numberOfTickets.errors
+        "
+        class="alert alert-danger"
+      >
+        This field is required
+      </p>
+    </div>
+    <div class="form-group">
+      <label for="">Flight Id</label>
+      <input type="text" class="form-control" formControlName="flightId" />
+      <p
+        *ngIf="
+          bookFlightForm.controls.flightId.errors?.flightIdInvalid &&
+          (bookFlightForm.controls.flightId.dirty ||
+            bookFlightForm.controls.flightId.touched ||
+            !bookFlightForm.controls.flightId.pristine)
+        "
+        class="alert alert-danger flight-id-warning"
+      >
+        Enter a valid flightId
+      </p>
+      <p
+        *ngIf="
+          (bookFlightForm.controls.flightId.dirty ||
+            bookFlightForm.controls.flightId.touched ||
+            !bookFlightForm.controls.flightId.pristine) &&
+          bookFlightForm.controls.flightId.errors.required
+        "
+        class="alert alert-danger"
+      >
+        This field is required
+      </p>
+    </div>
+
+    <button
+      [disabled]="!bookFlightForm.valid"
+      type="submit"
+      class="btn btn-primary"
+      (click)="book()"
+    >
+      Book
+    </button>
+  </div>
+</form>
+
+<!-- <div class="booking-wrapper">
+    <div class="heading">
+        <div class="row">
+            <h2>Book the Flight</h2>
+        </div>
+    </div>
+</div> -->

@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  showGuideline: boolean = true;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onGotIt() {
+    this.showGuideline = false;
   }
 
 }

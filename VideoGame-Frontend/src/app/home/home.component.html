@@ -1,19 +1,29 @@
 <div class="container-fluid">
   <div class="row justify-content-center">
-    <h1>Welcome to The Flight Booking System</h1>
+    <h1 *ngIf="showGuideline">Welcome to The Flight Booking System</h1>
   </div>
   <div class="content-wrapper">
-    <div class="row">
-      <h3>Quick Guidelines:</h3>
-    </div>
-    <div class="row">
-      <ol>
-        <li>While booking, eneter proper flight id (having 4 digit number)</li>
-        <li>Number of tickets can not be more than 40</li>
-      </ol>
-    </div>
-    <div class="row">
-      <button class="btn btn-dark">Got it!</button>
+    <div *ngIf="showGuideline; else showBooking" class="guideline-wrapper">
+      <div class="row">
+        <h3>Quick Guidelines:</h3>
+      </div>
+      <div class="row">
+        <ol>
+          <li>
+            While booking, eneter proper flight id (having 4 digit number)
+          </li>
+          <li>Number of tickets can not be more than 40</li>
+        </ol>
+      </div>
+      <div class="row">
+        <button (click)="onGotIt()" class="btn btn-dark">Got it!</button>
+      </div>
     </div>
   </div>
 </div>
+
+<ng-template #showBooking>
+    <div class="booking-content">
+        <app-book-flight></app-book-flight>
+    </div>
+</ng-template>

@@ -1,0 +1,31 @@
+.header-row {
+    background-color: #1E90FF;
+    color: white;
+    font-size: large;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    font-weight: 600;
+    // max-width: fit-content;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+form {
+    width: 600px;
+}
+
+.ng-valid[required]  {
+    border-left: 5px solid #42A948; /* green */
+  }
+  .ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+  }
+
+  .flight-id-warning {
+    margin-bottom: 0;
+  }
+
+// .blur-background {
+//     filter: blur(1px);
+//     -webkit-filter: blur(1px);
+// }

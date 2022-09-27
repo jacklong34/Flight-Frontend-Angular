@@ -4,3 +4,20 @@
 .content-wrapper {
     padding-left: 3rem;
 }
+
+.btn.btn-dark {
+    display: inline-block;
+    position: fixed;
+}
+
+.booking-content {
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    display: flex;
+}
+
