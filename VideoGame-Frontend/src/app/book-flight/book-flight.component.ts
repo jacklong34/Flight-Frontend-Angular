@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FlightService } from '../shared/flight.service';
+import { Flight } from '../shared/flights';
 
 @Component({
   selector: 'app-book-flight',
@@ -8,8 +10,10 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 })
 export class BookFlightComponent implements OnInit {
   bookFlightForm: FormGroup;
+  flight2Add: Flight;
+  flightPath: string = 'Flight';
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private flightService: FlightService) { }
 
   ngOnInit(): void {
     this.bookFlightForm = this.formBuilder.group({
@@ -17,11 +21,19 @@ export class BookFlightComponent implements OnInit {
       numberOfTickets: ['', [Validators.required, Validators.min(1)]],
       flightId: ['', [Validators.required, this.validateFlight]]
     });
+    this.flightPath = 'Flight 101';
+    console.log(this.flightPath);
   }
 
   book() {
-    console.log('Form has been submitted');
-    console.log(this.bookFlightForm);
+    this.flight2Add = new Flight();
+    this.flight2Add.passengerName = this.bookFlightForm.controls.passengerName.value;
+    this.flight2Add.numberOfTickets = this.bookFlightForm.controls.numberOfTickets.value;
+    this.flight2Add.flightId = this.bookFlightForm.controls.flightId.value;
+    this.flightService.addFlight(this.flight2Add);
+    
+    console.log(this.flightService.getFlights());
+    this.bookFlightForm.reset();
   }
 
   validateFlight(c: FormControl): any {

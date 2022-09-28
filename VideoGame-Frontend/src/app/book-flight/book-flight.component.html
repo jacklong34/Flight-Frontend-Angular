@@ -58,7 +58,7 @@
           (bookFlightForm.controls.flightId.dirty ||
             bookFlightForm.controls.flightId.touched ||
             !bookFlightForm.controls.flightId.pristine) &&
-          bookFlightForm.controls.flightId.errors.required
+          bookFlightForm.controls.flightId.errors?.required
         "
         class="alert alert-danger"
       >
